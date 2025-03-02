@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    before_action :set_article, only: %i[ show edit update ]
+    before_action :set_article, only: %i[ show edit update destroy]
 
     def index
         @articles = Article.all
@@ -33,17 +33,16 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
-        @article = Article.find(params[:id])
         @article.destroy
         redirect_to articles_path, notice: "Article was successfully deleted."
     end
 
     private
-    def article_params
-        params.expect(article: [ :title, :text ])
-    end
-
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def article_params
+        params.expect(article: [ :title, :text ])
     end
 end
