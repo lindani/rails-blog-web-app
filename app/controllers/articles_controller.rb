@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 
     def update
         if @article.update(article_params)
-            redirect_to @article
+            redirect_to @article, notice: "Article was successfully updated."
         else
             render :edit, status: :unprocessable_entity
         end
@@ -45,8 +45,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-        def article_params
-            params.require(:article).permit(:title, :text)
-        end
+        params.require(:article).permit(:title, :rich_text_content)
     end
 end
