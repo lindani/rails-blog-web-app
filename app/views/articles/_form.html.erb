@@ -23,6 +23,11 @@
     <%= form.rich_text_area :rich_text_content %>
   </p>
 
+  <div>
+    <%= form.label :featured_image, style: "display: block" %>
+    <%= form.file_field :featured_image, accept: "image/*" %>
+  </div>
+
   <p>
     <%= form.submit %>
   </p>
