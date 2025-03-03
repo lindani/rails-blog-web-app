@@ -19,12 +19,11 @@
   </p>
 
   <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
+    <%= form.label :rich_text_content, style: "display: block" %>
+    <%= form.rich_text_area :rich_text_content %>
   </p>
 
   <p>
     <%= form.submit %>
   </p>
-
 <% end %>

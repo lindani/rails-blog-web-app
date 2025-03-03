@@ -1,11 +1,13 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<% cache @article do %>
+  <p>
+    <strong>Title:</strong>
+    <%= @article.title %>
+  </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+  <p>
+    <strong>Text:</strong>
+    <%= @article.rich_text_content %>
+  </p>
 
-<%= link_to 'Edit', edit_article_path(@article) if authenticated?%> <%= link_to 'Back', articles_path %>
+  <%= link_to 'Edit', edit_article_path(@article) if authenticated?%> <%= link_to 'Back', articles_path %>
+<% end %>

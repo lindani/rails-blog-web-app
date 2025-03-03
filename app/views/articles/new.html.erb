@@ -1,5 +1,7 @@
-<h1>New Article</h1>
+<% if authenticated? %>
+    <h1>New Article</h1>
 
-<%= render 'form', if authenticated?%>
+    <%= render 'form'%>
 
-<%= link_to 'Back', articles_path %>
+    <%= link_to 'Back', articles_path %>
+<% end %>
