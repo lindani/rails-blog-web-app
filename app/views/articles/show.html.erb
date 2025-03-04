@@ -1,4 +1,6 @@
 <% cache @article do %>
+  <p>Author: <%= @article.user.email_address %></p>
+
   <p>
     <strong>Title:</strong>
     <%= @article.title %>
@@ -9,9 +11,9 @@
     <%= @article.rich_text_content %>
   </p>
   <%= image_tag @article.featured_image if @article.featured_image.attached? %>
-
-  <% if authenticated? %>
-    <%= link_to 'Edit', edit_article_path(@article) %>
+  <% if current_user && @article.user == current_user %>
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Delete', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 
   <%= link_to 'Back', articles_path %>
